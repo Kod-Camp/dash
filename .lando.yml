@@ -1,0 +1,51 @@
+name: dash
+recipe: drupal8
+config:
+  webroot: web
+services:
+#  appserver:
+#    run:
+#      - bash config/init.sh
+#    overrides:
+#      environment:
+#        MINK_DRIVER_ARGS: '["chrome", null, "http://chromedriver:4444/wd/hub"]'
+#        MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", null, "http://chromedriver:4444/wd/hub"]'
+#        MINK_DRIVER_CLASS: 'Drupal\FunctionalJavascriptTests\DrupalSelenium2Driver'
+#        BROWSERTEST_OUTPUT_DIRECTORY: '/app/web/sites/default/files/phpunit'
+#        SIMPLETEST_DB: 'mysql://drupal8:drupal8@database/drupal8'
+#        SIMPLETEST_BASE_URL: 'https://address-sandbox.lndo.site/'
+#        PHP_IDE_CONFIG: "serverName=appserver"
+  chromedriver:
+    type: compose
+    services:
+      image: robcherry/docker-chromedriver:latest
+      expose:
+        - "4444"
+      environment:
+        CHROMEDRIVER_WHITELISTED_IPS: ""
+        CHROMEDRIVER_URL_BASE: "/wd/hub"
+      security_opt:
+        - seccomp:unconfined
+      command: ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]
+tooling:
+  phpunit:
+    service: appserver
+    description: "Run PHP Unit tests: lando phpunit"
+    cmd: /app/vendor/bin/phpunit --debug --configuration /app/web/core/phpunit.xml
+  phpcs:
+    service: appserver
+    description: Run phpcs for given folder or file.
+    cmd: /app/vendor/bin/phpcs --standard=Drupal,DrupalPractice
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug.
+    cmd: "docker-php-ext-enable xdebug && /etc/init.d/apache2 reload"
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug.
+    cmd: "rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload"
+    user: root
+  drupalorg:
+    service: appserver
+    description: A command line tool for interfacing with Drupal.org.
