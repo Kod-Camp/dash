@@ -12,24 +12,24 @@ quickly.
 A dash of this and that to make the season bright. We've included everything you
 need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 
-- Drupal core
-- Gitignore
-- Lando
-- Drush
-- Drupal Console
-- Behat
-- PHPUnit
-- PHP CodeSniffer
-- NodeJS/NPM with Composer
-- Xdebug on/off switch
-- Asset packagist
-- Patch handling
-- Drupal.org CLI
-- Rector
-- Admin Toolbar
-- Module Filter
-- Devel
-- Dotenv
+- [x] Drupal core
+- [x] Gitignore
+- [x] Lando config
+- [ ] Drush
+- [ ] Drupal Console
+- [ ] Behat
+- [ ] PHPUnit
+- [ ] PHP CodeSniffer
+- [ ] NodeJS/NPM with Composer
+- [ ] Xdebug on/off switch
+- [ ] Asset packagist
+- [ ] Patch handling
+- [ ] Drupal.org CLI
+- [ ] Rector
+- [ ] Admin Toolbar
+- [ ] Module Filter
+- [ ] Devel
+- [ ] Dotenv
 
 ## Requirements
 
