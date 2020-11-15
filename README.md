@@ -18,7 +18,7 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [x] Drush
 - [x] Drupal Console
 - [x] Xdebug on/off switch
-- [ ] PHP CodeSniffer
+- [x] PHP CodeSniffer
 - [ ] NodeJS/NPM with Composer
 - [ ] Asset packagist
 - [ ] Patch handling

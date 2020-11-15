@@ -34,8 +34,18 @@ tooling:
     cmd: /app/vendor/bin/phpunit --debug --configuration /app/web/core/phpunit.xml
   phpcs:
     service: appserver
-    description: Run phpcs for given folder or file.
-    cmd: /app/vendor/bin/phpcs --standard=Drupal,DrupalPractice
+    description: |-
+      Check Drupal coding standards
+
+      Example:
+        lando phpcs path/to/drupal/example_module
+  phpcbf:
+    service: appserver
+    description: |-
+      Automatically fix coding standards
+
+      Example:
+        lando phpcbf path/to/drupal/example_module
   xdebug-on:
     user: root
     service: appserver
