@@ -20,7 +20,7 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [x] Xdebug on/off switch
 - [x] PHP CodeSniffer
 - [x] NodeJS/NPM
-- [ ] Asset packagist
+- [x] Asset packagist
 - [ ] Patch handling
 - [ ] Drupal.org CLI
 - [ ] Rector
