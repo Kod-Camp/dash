@@ -22,7 +22,7 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [x] NodeJS/NPM
 - [x] Asset packagist
 - [x] Patch handling
-- [ ] Drupal.org CLI
+- [x] Drupal.org CLI
 - [ ] Rector
 - [ ] Admin Toolbar
 - [ ] Module Filter
