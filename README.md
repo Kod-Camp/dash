@@ -17,11 +17,9 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [x] Lando config
 - [x] Drush
 - [x] Drupal Console
-- [ ] Behat
-- [ ] PHPUnit
+- [x] Xdebug on/off switch
 - [ ] PHP CodeSniffer
 - [ ] NodeJS/NPM with Composer
-- [ ] Xdebug on/off switch
 - [ ] Asset packagist
 - [ ] Patch handling
 - [ ] Drupal.org CLI
@@ -29,6 +27,8 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [ ] Admin Toolbar
 - [ ] Module Filter
 - [ ] Devel
+- [ ] PHPUnit
+- [ ] Behat
 - [ ] Dotenv
 
 ## Requirements

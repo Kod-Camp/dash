@@ -37,15 +37,17 @@ tooling:
     description: Run phpcs for given folder or file.
     cmd: /app/vendor/bin/phpcs --standard=Drupal,DrupalPractice
   xdebug-on:
+    user: root
     service: appserver
-    description: Enable xdebug.
+    description: Enable Xdebug.
     cmd: "docker-php-ext-enable xdebug && /etc/init.d/apache2 reload"
-    user: root
   xdebug-off:
-    service: appserver
-    description: Disable xdebug.
-    cmd: "rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload"
     user: root
+    service: appserver
+    description: |-
+      Disable Xdebug.
+      (Recommended for performance when not actively debugging)
+    cmd: "rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload"
   drupalorg:
     service: appserver
     description: A command line tool for interfacing with Drupal.org.
