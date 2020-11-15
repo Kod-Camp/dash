@@ -27,6 +27,8 @@ services:
       security_opt:
         - seccomp:unconfined
       command: ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]
+  node:
+    type: node:12
 tooling:
   phpunit:
     service: appserver
@@ -61,3 +63,9 @@ tooling:
   drupalorg:
     service: appserver
     description: A command line tool for interfacing with Drupal.org.
+  npm:
+    service: node
+    description: |
+      Run NPM commands. Be sure to be inside your target theme directory.
+      cd path/to/theme
+      lando npm install

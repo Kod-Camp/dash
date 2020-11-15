@@ -19,7 +19,7 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [x] Drupal Console
 - [x] Xdebug on/off switch
 - [x] PHP CodeSniffer
-- [ ] NodeJS/NPM with Composer
+- [x] NodeJS/NPM
 - [ ] Asset packagist
 - [ ] Patch handling
 - [ ] Drupal.org CLI
@@ -49,4 +49,26 @@ Change the project name in `.lando.yml`
 
 ```
 lando start
+```
+
+## Customizations
+
+The following changes could be made to adapt to your project needs.
+
+### Node with Composer
+
+This is useful for themes where front-end builds with Node.js require Composer.
+
+```
+# .lando.yml
+  node:
+    # Provide nodejs via a PHP container.
+    # Provides Composer for use with Pattern Lab themes.
+    #type: php:7.3
+    #via: cli
+    #build_as_root:
+    #  - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+    #  - apt-get install -y nodejs
+    #run_as_root:
+    #  - "npm install -g grunt-cli -y"
 ```
