@@ -15,7 +15,7 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [x] Drupal core
 - [x] Gitignore
 - [x] Lando config
-- [ ] Drush
+- [x] Drush
 - [ ] Drupal Console
 - [ ] Behat
 - [ ] PHPUnit
