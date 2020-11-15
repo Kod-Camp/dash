@@ -21,7 +21,7 @@ need to Sprint in a contrib lounge or start an enterprise-level Drupal project.
 - [x] PHP CodeSniffer
 - [x] NodeJS/NPM
 - [x] Asset packagist
-- [ ] Patch handling
+- [x] Patch handling
 - [ ] Drupal.org CLI
 - [ ] Rector
 - [ ] Admin Toolbar
