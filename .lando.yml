@@ -2,38 +2,29 @@ name: dash
 recipe: drupal8
 config:
   webroot: web
+  php: 7.4
 services:
-#  appserver:
-#    run:
-#      - bash config/init.sh
-#    overrides:
-#      environment:
-#        MINK_DRIVER_ARGS: '["chrome", null, "http://chromedriver:4444/wd/hub"]'
-#        MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", null, "http://chromedriver:4444/wd/hub"]'
-#        MINK_DRIVER_CLASS: 'Drupal\FunctionalJavascriptTests\DrupalSelenium2Driver'
-#        BROWSERTEST_OUTPUT_DIRECTORY: '/app/web/sites/default/files/phpunit'
-#        SIMPLETEST_DB: 'mysql://drupal8:drupal8@database/drupal8'
-#        SIMPLETEST_BASE_URL: 'https://address-sandbox.lndo.site/'
-#        PHP_IDE_CONFIG: "serverName=appserver"
-  chromedriver:
-    type: compose
-    services:
-      image: robcherry/docker-chromedriver:latest
-      expose:
-        - "4444"
+  appserver:
+    overrides:
       environment:
-        CHROMEDRIVER_WHITELISTED_IPS: ""
-        CHROMEDRIVER_URL_BASE: "/wd/hub"
-      security_opt:
-        - seccomp:unconfined
-      command: ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]
+        SIMPLETEST_BASE_URL: "https://appserver"
+        SIMPLETEST_DB: "sqlite://localhost/tmp/db.sqlite"
+        MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox"]}}, "http://chrome:9515"]'
+        DRUSH_OPTIONS_ROOT: '/app/web'
+        DRUSH_OPTIONS_URI: 'http://dash.lndo.site'
+  chrome:
+    type: compose
+    app_mount: false
+    services:
+      image: drupalci/webdriver-chromedriver:production
+      command: chromedriver --log-path=/tmp/chromedriver.log --verbose --whitelisted-ips=
   node:
     type: node:12
 tooling:
   phpunit:
     service: appserver
     description: "Run PHP Unit tests: lando phpunit"
-    cmd: /app/vendor/bin/phpunit --debug --configuration /app/web/core/phpunit.xml
+    cmd: /app/vendor/bin/phpunit --configuration /app/web/core/phpunit.xml.dist
   phpcs:
     service: appserver
     description: |-
