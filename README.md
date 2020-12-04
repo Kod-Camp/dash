@@ -1,13 +1,7 @@
-#    build_as_root:
-#      - apt-get update -y && apt-get install -y libsqlite3-dev
-#      - docker-php-ext-enable pdo_sqlite
 # Dash
 
 An opinionated project template to spin up Drupal projects in a dash.
 
-#    build_as_root:
-#      - apt-get update -y && apt-get install -y libsqlite3-dev
-#      - docker-php-ext-enable pdo_sqlite
 ## What is Dash?
 
 A way for first-time or veteran code-sprinters to launch a Drupal instance
